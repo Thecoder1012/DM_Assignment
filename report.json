@@ -1,0 +1,30 @@
+{
+  "case_id": "Atelectasis_case0",
+  "predictions": [
+    {
+      "label": "Atelectasis",
+      "probability": 0.35043153166770935
+    },
+    {
+      "label": "Cardiomegaly",
+      "probability": 0.3139479160308838
+    },
+    {
+      "label": "Consolidation",
+      "probability": 0.24739393591880798
+    }
+  ],
+  "medical_report": "Findings:\n- Possible right lower lobe atelectasis.\n- Mild cardiomegaly cannot be ruled out.\n- No definite consolidation is identified.\n\nImpression:\nSuspected atelectasis. Further imaging or clinical correlation is recommended for definitive diagnosis.",
+  "summary_and_next_steps": [
+    "Possible right lower lobe atelectasis suspected.",
+    "Mild cardiomegaly cannot be ruled out.",
+    "No consolidation identified.",
+    "Further imaging or clinical correlation is recommended to confirm atelectasis diagnosis."
+  ],
+  "simplified_report": "The chest X-ray shows a possible partial collapse of the lung in the lower right side (atelectasis).  The heart may be slightly larger than normal, but this isn't certain.  There's no evidence of a lung infection (consolidation).  To be sure about the lung collapse, more tests or a doctor's examination are needed.",
+  "prompts": {
+    "stage1": "You are a board-certified radiologist. For each case, produce ONLY a JSON object with key \"medical_report\":\n\nCase ID: EX001\nViews:\n- PA_EX001.png\n- LAT_EX001.png\n- AP_EX001.png\nPredictions:\n- Cardiomegaly: 82.0%\n- Pulmonary Edema: 12.0%\n- Normal: 6.0%\n\nResponse:\n{\"medical_report\": \"Findings:\\n- Enlarged cardiac silhouette with CTR >0.55.\\n- Kerley B lines and interstitial markings consistent with pulmonary edema.\\n\\nImpression:\\nModerate cardiomegaly with interstitial pulmonary edema.\"}\n\nCase ID: EX002\nViews:\n- PA_EX002.png\n- LAT_EX002.png\n- AP_EX002.png\nPredictions:\n- COVID-19 Pneumonia: 90.0%\n- ARDS: 5.0%\n- Normal: 5.0%\n\nResponse:\n{\"medical_report\": \"Findings:\\n- Bilateral peripheral ground-glass opacities.\\n- No pleural effusion or cardiomegaly.\\n\\nImpression:\\nFindings consistent with early COVID-19 pneumonia.\"}\n\nCase ID: Atelectasis_case0\nViews:\n- Atelectasis.00006715_000.png\n- Atelectasis.Pneumonia.00013952_000.png\nPredictions:\n- Atelectasis: 35.0%\n- Cardiomegaly: 31.4%\n- Consolidation: 24.7%\n\nResponse (JSON):\n",
+    "stage2": "Based on the detailed medical report below, extract a concise JSON with key \"summary_and_next_steps\" as a list of bullet points:\n\nFindings:\n- Possible right lower lobe atelectasis.\n- Mild cardiomegaly cannot be ruled out.\n- No definite consolidation is identified.\n\nImpression:\nSuspected atelectasis. Further imaging or clinical correlation is recommended for definitive diagnosis.\n\nResponse (JSON):\n",
+    "stage3": "Now, given the detailed findings and summary below, produce a JSON with key \"simplified_report\": a plain-language explanation for a non-expert:\n\nFindings:\n- Possible right lower lobe atelectasis.\n- Mild cardiomegaly cannot be ruled out.\n- No definite consolidation is identified.\n\nImpression:\nSuspected atelectasis. Further imaging or clinical correlation is recommended for definitive diagnosis.\n\nSummary:\n['Possible right lower lobe atelectasis suspected.', 'Mild cardiomegaly cannot be ruled out.', 'No consolidation identified.', 'Further imaging or clinical correlation is recommended to confirm atelectasis diagnosis.']\n\nResponse (JSON):\n"
+  }
+}
